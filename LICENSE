@@ -1,24 +1,31 @@
-This is free and unencumbered software released into the public domain.
+Custom License
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+Copyright (c) 2023, Alexey Chekulaev
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+Copy and/or distribution of any content in this repository is not allowed
+All rights reserved under copyright law
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+What is allowed:
+1. Read and learn any materials in this repository, following rules and techniques described in this repository
+2. Reference this repository in any sort of projects including commercial
+3. Reference individual pages in this repository
+4. Reference individual rules including rule number and rule name in this repository
 
-For more information, please refer to <https://unlicense.org>
+Contribution, Co-ownership, Co-authoring
+Contribution is allowed in form of Pull Requests and only if Pull Request is approved by original author - Alexey Chekulaev
+Once Pull Request is merged, the change became subject of this license - all rights belong to Alexey Chekulaev
+Any git branch with all modifications remains an property of repository owner - Alexey Chekulaev, no copying or distribution is allowed
+By making a Pull Request a contributor agrees with this license agreement
+Particularly a contributor do not became a Co-owner and can't claim any rights, Contributor agrees that all rights over contributed content belong to original author - Alexey Chekulaev
+It is only allowed to reference code in "main" branch. It is not allowed to make a branch and reference it
+Contribution do not give a contributor any rights
+Contributors must specify source of the content if it was copied from somewhere else
+Any modifications except Contribution explained above are not allowed
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
