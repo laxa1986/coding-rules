@@ -19,10 +19,28 @@ Here error can be raised not only by `fetch`.
 If error comes from `response.json()`, then throwing `Network error` would be misleading
 
 *Fix*: everything that cannot raise any error – move out of `try` block (like url preparation).
-If there are multiple lines that can raise an error, then they should be in separate `try` blocks
+If there are multiple lines that can raise an error, then they should be in separate `try` blocks,
+EVEN if it requires to move some variable definition out of the `try` block:
 
+```javascript
+const url = 'https://api.example.com/' + path
+let response
+try {
+    response = await fetch(url, options)
+} catch (error) {
+    throw new Error('Network error')
+}
+try {
+    return await response.json()
+} catch (error) {
+    throw new Error('response body parsing error')
+}
+```
 
-## Rule 2. No log and throw
+This code does look more verbose, but it is more accurate and easier to debug.
+You can easily understand which line raised an error just by looking at the error message.
+
+## Rule 2. No log-and-throw
 
 Most of the time unhandled error is logged by the generic error handler, by framework, or by the runtime itself.
 Most of the time such generic handler logs the error. So we come to double logging (and double stack trace!)
