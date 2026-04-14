@@ -34,3 +34,18 @@ if (bad condition) {
 }
 // main logic
 ```
+
+## Line length
+
+Code needs to be compact, require less scrolling. Modern monitors make comfortable to have up to 150 characters.
+Do not wrap lines at 80 not even 120 characters as long as it fits 150.
+```java
+// do not wrap unless it exceeds 150 characters
+var res = someService.longMethodName(param1, ... paramN)
+
+// if line is too long because of calling other functions
+var res = someService.longMethodName(param1, calculateParam2())
+// then instead of wrapping line, move calculation of param2 to a separate line
+var param2 = calculateParam2();
+var res = someService.longMethodName(param1, param2);
+```
