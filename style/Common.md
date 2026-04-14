@@ -49,3 +49,8 @@ var res = someService.longMethodName(param1, calculateParam2())
 var param2 = calculateParam2();
 var res = someService.longMethodName(param1, param2);
 ```
+
+## Quotes for strings
+
+Some programming languages have two types of quotes for strings: single and double: JavaScript/TypeScript, Python.
+Use single quotes everywhere for consistency
