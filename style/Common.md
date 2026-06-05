@@ -17,10 +17,28 @@ if (!country.equals("US")) {
 }
 ```
 
+## Negative conditions at the top
+
+Place negative conditions at the top of the method, doing either return or throw slowly progressing to happy path:
+
+```jupyter
+def delete(self, key: str) -> DeleteEnvResult:
+    # check that such env exists and throw if not
+
+    # handle special case - environment is already being - return a well formed response
+
+    # happy path - environment exists and is not being deleted - do the actual deletion
+    _delete()
+```
+
 ## Short circuit
 
+This rule is a evolution of `Negative conditions at the top` rule. Idea is that if there are 2 positive/neutral branches,
+but one of them is much smaller than another, then it is better to short circuit the smaller one
+and return early instead of nesting main logic in `else` block
+
 ```java
-if (bad condition) {
+if (condition) {
     // small block
 } else {
     // main logic
@@ -28,12 +46,51 @@ if (bad condition) {
 ```
 Fix
 ```java
-if (bad condition) {
+if (condition) {
     // small block
     return;
 }
 // main logic
 ```
+
+## Method order
+
+Given method a calls method b, e.g.:
+```java
+void a() {
+    b();
+}
+```
+Method `a` must be placed higher in the code than method `b`
+
+## Return empty collection, not null
+
+Given method signature that returns a collection, e.g.
+```
+List<String> getNames() // java
+getNames(): String[] // javascript
+def get_names() -> List[str] # python
+```
+If there are no names to return, it should return an empty collection instead of null/None
+
+## Annotations in staircase style
+
+Many languages allow placing some metadata on classes and methods in the form of annotations/decorators.
+Idea is to place them in a staircase style:
+
+```java
+@Service
+@Slf4j
+public class MyClass { }
+```
+
+Fix:
+```java
+@Slf4j
+@Service
+public class MyClass { }
+```
+
 
 ## Line length
 
@@ -43,9 +100,9 @@ Do not wrap lines at 80 not even 120 characters as long as it fits 150.
 // do not wrap unless it exceeds 150 characters
 var res = someService.longMethodName(param1, ... paramN)
 
-// if line is too long because of calling other functions
+// if the line is too long because of calling other functions
 var res = someService.longMethodName(param1, calculateParam2())
-// then instead of wrapping line, move calculation of param2 to a separate line
+// then instead of wrapping the line, move the calculation of param2 to a separate line
 var param2 = calculateParam2();
 var res = someService.longMethodName(param1, param2);
 ```
