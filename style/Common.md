@@ -1,5 +1,8 @@
 # Common rules
 
+Common rules for programming languages such as Java, JavaScript/TypeScript, Python, Go.
+Not applicable to DSL languages such as SQL, HCL (Terraform), XML, YAML and so on
+
 ## Code reputation
 
 Many tools like SonarQube do detect code duplication blocks. Here we talk about more subtle cases like this:
