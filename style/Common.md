@@ -114,3 +114,12 @@ var res = someService.longMethodName(param1, param2);
 
 Some programming languages have two types of quotes for strings: single and double: JavaScript/TypeScript, Python.
 Use single quotes everywhere for consistency
+
+## public vs private
+
+Use most restrictive access modifier possible. If method/field is used only within the class, make it private.
+If it is used in the package, make it package-private (java), protected (python).
+Only if it is used outside the package, make it public.
+
+Note: do NOT make method public just because you want to write a unit test for it.
+If method is not used outside the class, it should be private, even if it makes testing harder.
