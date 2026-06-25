@@ -40,13 +40,7 @@ try {
 This code does look more verbose, but it is more accurate and easier to debug.
 You can easily understand which line raised an error just by looking at the error message.
 
-## Rule 2. No log-and-throw
-
-Most of the time unhandled error is logged by the generic error handler, by framework, or by the runtime itself.
-Most of the time such generic handler logs the error. So we come to double logging (and double stack trace!)
-
-
-## Rule 3. Rethrowing exceptions
+## Rule 2. Rethrowing exceptions
 
 Often you need to rethrow an exception: sometimes keep same type and just add some context, sometimes wrap exception in another one.
 Do it right! Do not concatenate exception to a message, almost all languages give a mechanism of exception chaining, use it!
@@ -79,5 +73,19 @@ func GetAccount(ctx context.Context, dynamo *dynamodb.Client, custId int) (model
 	if err != nil {
 		return acc, fmt.Errorf("dynamodb query: %w", err)
 	}
+}
+```
+
+## Rule 3. No log and rethrow
+
+Most of the time unhandled error is logged by the generic error handler, by framework, or by the runtime itself.
+Most of the time such generic handler logs the error.
+So if you catch error, log it and re-throw, then you end up with double logging (and double stack trace!)
+
+Java
+```java
+catch (IOException e) {
+    LOGGER.error("message", e); // <-- this is redundant
+    throw new ServiceException("message", e);
 }
 ```
