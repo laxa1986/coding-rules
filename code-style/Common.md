@@ -103,3 +103,23 @@ var res = someService.longMethodName(param1, param2);
 
 Some programming languages have two types of quotes for strings: single and double: JavaScript/TypeScript, Python.
 Use single quotes everywhere for consistency
+
+## Multiple operations in one line
+
+If you have two operations in one line and then error happens in this line
+it can be hard to understand which operation caused the error
+
+Bad:
+```java
+var balance = user.getSecondaryAccount().getBalance(); // secondary account can be null
+```
+
+Acceptable:
+```javascript
+const count = Object.keys(obj).length
+```
+
+## for loop vs functional programming
+
+Use .map, .filter when intention is clear: transform/filter a collection.
+If scenario is more complex, use traditional for loop, it is more readable and easier to debug

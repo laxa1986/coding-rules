@@ -84,8 +84,26 @@ So if you catch error, log it and re-throw, then you end up with double logging 
 
 Java
 ```java
-catch (IOException e) {
+} catch (IOException e) {
     LOGGER.error("message", e); // <-- this is redundant
     throw new ServiceException("message", e);
 }
+```
+
+## Rule 4. Log exception
+
+On the other side, if you write a piece of code where exception is finally handled,
+them make sure you DO log it
+
+```java
+} catch (IOException e) {
+    LOGGER.error("message", e);
+}
+```
+
+In python if you catch an exception there is always 'current exception' `sys.exc_info()`,
+so you might not need to explicitly pass it, just call right method (exception, not error) to log it:
+```python
+except Exception:
+    logger.exception('Internal server error')
 ```

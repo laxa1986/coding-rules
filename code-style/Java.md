@@ -24,3 +24,7 @@ This is extremely rare, do not override `hashCode` just because you override `eq
 
 Lombok's `@Data` annotation generates `equals` and `hashCode` methods by default. Most of the time you do not need them.
 So _DO NOT_ use `@Data`, use class level `@Setter`, `@Getter` instead
+
+## Use == to compare enums
+
+It is more readable, and it is safe (unlike String or Integer comparison)
