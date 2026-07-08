@@ -123,3 +123,33 @@ const count = Object.keys(obj).length
 
 Use .map, .filter when intention is clear: transform/filter a collection.
 If scenario is more complex, use traditional for loop, it is more readable and easier to debug
+
+## Global variables / Thread locals (Java)
+
+It is common to see a globa/static methods something like `Request.getCurrentUser()`. Avoid using them.
+Justification: they take data from global variable or thread local (Java). While you think you're in an http processing thread,
+but tomorrow same code can be called asynchronously in a different thread and this method behavior not determined.
+It is much safer and more testable to pass all required data as method parameters.
+All context data need to be retrieved from the request (http method processing) or event (async processing)
+at controller level and passed down to the service layer as method parameters.
+
+## Calculations that might not be needed
+
+Sometimes you do some calculations (or just assign a variable) that might not be needed due to some negative condition
+
+```java
+var token = request.getToken();
+if (condition) {
+    return
+}
+registerToken(token);
+```
+
+Correct:
+```java
+if (condition) {
+    return
+}
+var token = request.getToken();
+registerToken(token);
+```

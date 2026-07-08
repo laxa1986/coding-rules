@@ -28,3 +28,10 @@ So _DO NOT_ use `@Data`, use class level `@Setter`, `@Getter` instead
 ## Use == to compare enums
 
 It is more readable, and it is safe (unlike String or Integer comparison)
+
+## Serializable and serialVersionUID
+
+Do not implement `Serializable` unless you really use java native serialization. It is very-very rare.
+Now days it is more common to use JSON or Protobuf serialization. Many developers implement `Serializable` w/o any reason.
+Sometimes you deal with legacy code and have to extend some class that already implements `Serializable`.
+In this case DO NOT add `serialVersionUID` field, unless you really need to control serialization versioning. It is very-very rare case.
