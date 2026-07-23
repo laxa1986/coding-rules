@@ -43,3 +43,12 @@ It is better to place small test data right in the test code (using multi line s
 
 Never compare JSON strings directly, because they can be formatted differently (spaces, new lines, order of fields).
 Instead, use special utils (such as `JSONAssert` in Java) or parse them into objects and compare objects.
+
+### Logging
+
+Never use logging in unit tests. Logs are needed in production code to understand what happened.
+Tests are documentation - they describe how code should behave (test name and asserts).
+Logging in tests only adds noise on CI pipelines.
+Note 1: it is possible (but rare) to _temporarily_ add logging to investigate super tricky tests that deal with multithreading,
+but after issue is resolved, remove logging from tests.
+Note 2: it is OK to Spy on logger in code that is being tested if this logging is very important
