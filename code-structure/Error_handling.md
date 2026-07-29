@@ -85,24 +85,33 @@ So if you catch error, log it and re-throw, then you end up with double logging 
 Java
 ```java
 } catch (IOException e) {
-    LOGGER.error("message", e); // <-- this is redundant
+    logger.error("message", e); // <-- this is redundant
     throw new ServiceException("message", e);
 }
 ```
 
-## Rule 4. Log exception
+## Rule 4. Log stack trace
 
 On the other side, if you write a piece of code where exception is finally handled,
-them make sure you DO log it
+them make sure you DO log the stack trace
 
+In Java, all modern logger libraries (Slf4j, Logback) have same contract - you pass exception as last argument:
 ```java
 } catch (IOException e) {
-    LOGGER.error("message", e);
+    logger.error("message", e);
 }
 ```
 
-In python if you catch an exception there is always 'current exception' `sys.exc_info()`,
-so you might not need to explicitly pass it, just call right method (exception, not error) to log it:
+In JavaScript, Pino is the most popular logger library. You need to pass error object as first argument in `error` method:
+```javascript
+} catch (err) {
+    logger.error(err, 'message');
+}
+```
+
+In Python if you catch an exception there is always 'current exception' `sys.exc_info()`.
+so you might not need to explicitly pass it.
+For example this uses AWS Lambda PowerTools logger, note `exception` method used, not `error`:
 ```python
 except Exception:
     logger.exception('Internal server error')
