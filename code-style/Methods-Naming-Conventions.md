@@ -24,3 +24,23 @@
 | `on*`                     | Event listener / callback                   | ✅             | void              | `onConnect()`, `onMessageReceived()`       |
 | `register` / `subscribe`  | Add to registry or listener list            | ✅             | void              | `registerHandler()`, `subscribeToEvents()` |
 | `reset` / `clear`         | Remove state without destroying object      | ✅             | void              | `resetContext()`, `clearCache()`           |
+
+## Mapper method names
+
+Use short method names for mappers, such as `fromDto`, `toDto`, `fromEntity`, `toEntity`.
+Avoid long names like `convertFromDtoToEntity` or `mapFromDtoToEntity`.
+Rational: even dynamic languages like Python or JavaScript have type hints, so you can see the types of input and output,
+so there is no need to repeat them in method name.
+In most scenarios prefer `toTargetType`. Use `fromSourceType` when there are multiple source types for the same target type.
+
+Bad:
+```python
+def convertFromDtoToEntity(dto: UserDto) -> UserEntity:
+    ...
+```
+
+Good:
+```python
+def toEntity(dto: UserDto) -> UserEntity:
+    ...
+```
