@@ -116,3 +116,24 @@ For example this uses AWS Lambda PowerTools logger, note `exception` method used
 except Exception:
     logger.exception('Internal server error')
 ```
+
+## Rule 5. Log error before returning 500
+
+Make sure you always log error before returning 500 to the client.
+That might sound obvious, but I (Alex C) have seen teams that don't do it.
+Error in logs not just help you with problem analysis, but also allow you to get alerted!
+
+Bad:
+```javascript
+} catch (error) {
+    return new Response('Internal server error', { status: 500 })
+}
+```
+
+Good:
+```javascript
+} catch (error) {
+    logger.error(error, 'Internal server error')
+    return new Response('Internal server error', { status: 500 })
+}
+```
