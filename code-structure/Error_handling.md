@@ -137,3 +137,22 @@ Good:
     return new Response('Internal server error', { status: 500 })
 }
 ```
+
+## Rule 6. Do not add code location in the error message
+
+Adding code location in the error message is redundant and can lead to maintenance issues.
+The stack trace already provides this information, so there's no need to include it in the message itself.
+
+Bad:
+```javascript
+} catch (error) {
+    throw new Error('[InvoiceService] Can not create invoice for order ' + orderId)
+}
+```
+
+Good:
+```javascript
+} catch (error) {
+    throw new Error('Can not create invoice for order ' + orderId)
+}
+```
