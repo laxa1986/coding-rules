@@ -153,3 +153,8 @@ if (condition) {
 var token = request.getToken();
 registerToken(token);
 ```
+
+## Avoid import *
+
+Java, Python allow to import all members of a package/module with `*`.
+It is better to import only what you need, it makes code more readable and avoids name collisions
